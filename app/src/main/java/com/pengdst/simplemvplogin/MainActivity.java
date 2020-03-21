@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         String username = data.getStringExtra(ConstantsHelpers.USERNAME_CONS);
 
-        binding.tvHello.setText(username);
+        binding.tvHello.setText("Welcome, "+username);
     }
 }
