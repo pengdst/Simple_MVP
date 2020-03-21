@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         binding.btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgressbar();
                 loginPresenter.login(binding.etUsername.getText().toString(), binding.etPassword.getText().toString());
             }
         });
