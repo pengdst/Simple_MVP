@@ -14,17 +14,16 @@ public class LoginPresenter {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 if (TextUtils.isEmpty(username) && TextUtils.isEmpty(password)){
                     loginView.setUsernameError();
                     loginView.setPasswordError();
                     loginView.hideProgressbar();
                 }else if(username.equals("pengkuh") && password.equals("admin")){
+                    loginView.hideProgressbar();
                     loginView.onLoginSuccess(username);
-                    loginView.hideProgressbar();
                 }else{
-                    loginView.onLoginError();
                     loginView.hideProgressbar();
+                    loginView.onLoginError();
                 }
             }
         }, 2000);
