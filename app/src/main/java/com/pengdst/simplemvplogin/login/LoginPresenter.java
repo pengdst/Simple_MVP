@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 public class LoginPresenter implements OnLoginFinished {
-    LoginView loginView;
+    private LoginView loginView;
 
     public LoginPresenter(LoginView loginView) {
         this.loginView = loginView;
