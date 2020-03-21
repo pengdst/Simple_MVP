@@ -2,6 +2,7 @@ package com.pengdst.simplemvplogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -54,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void onLoginSuccess(String username) {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra(ConstantsHelpers.USERNAME_CONS, username);
         Toast.makeText(getApplicationContext(), "Success login "+username, Toast.LENGTH_SHORT).show();
     }
 
