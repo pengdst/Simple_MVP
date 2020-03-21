@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void hideProgressbar() {
-        binding.pbLogin.setVisibility(View.GONE);
+        binding.pbLogin.setVisibility(View.INVISIBLE);
     }
 
     @Override
