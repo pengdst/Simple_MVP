@@ -3,7 +3,7 @@ package com.pengdst.simplemvplogin.login;
 import android.os.Handler;
 import android.text.TextUtils;
 
-public class LoginPresenter {
+public class LoginPresenter implements LoginInteractor {
     LoginView loginView;
 
     public LoginPresenter(LoginView loginView) {
@@ -15,17 +15,34 @@ public class LoginPresenter {
             @Override
             public void run() {
                 if (TextUtils.isEmpty(username) && TextUtils.isEmpty(password)){
-                    loginView.setUsernameError();
-                    loginView.setPasswordError();
-                    loginView.hideProgressbar();
+                    onLoginSuccess(username);
                 }else if(username.equals("pengkuh") && password.equals("admin")){
-                    loginView.hideProgressbar();
-                    loginView.onLoginSuccess(username);
+                    onLoginError();
                 }else{
-                    loginView.hideProgressbar();
-                    loginView.onLoginError();
+                    onLoginError();
                 }
+                loginView.hideProgressbar();
             }
         }, 2000);
+    }
+
+    @Override
+    public void onUsernameError() {
+        loginView.setUsernameError();
+    }
+
+    @Override
+    public void onPasswordError() {
+        loginView.setPasswordError();
+    }
+
+    @Override
+    public void onLoginSuccess(String username) {
+        loginView.onLoginSuccess(username);
+    }
+
+    @Override
+    public void onLoginError() {
+        loginView.onLoginError();
     }
 }
