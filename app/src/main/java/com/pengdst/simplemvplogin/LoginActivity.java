@@ -3,12 +3,62 @@ package com.pengdst.simplemvplogin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+import com.pengdst.simplemvplogin.databinding.ActivityLoginBinding;
+
+public class LoginActivity extends AppCompatActivity implements LoginView {
+    ActivityLoginBinding binding;
+    LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        initPresenter();
+
+        binding.btLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPresenter.login(binding.etUsername.getText().toString(), binding.etPassword.getText().toString());
+            }
+        });
+    }
+
+    private void initPresenter() {
+        loginPresenter = new LoginPresenter(this);
+    }
+
+    @Override
+    public void setUsernameError() {
+        binding.etUsername.setError("Please Fill Username");
+    }
+
+    @Override
+    public void setPasswordError() {
+        binding.etPassword.setError("Please Fill Password");
+    }
+
+    @Override
+    public void showProgressbar() {
+        binding.pbLogin.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressbar() {
+        binding.pbLogin.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onLoginSuccess(String username) {
+        Toast.makeText(getApplicationContext(), "Success login "+username, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoginError() {
+        Toast.makeText(getApplicationContext(), "Password and Username Wrong", Toast.LENGTH_SHORT).show();
     }
 }
