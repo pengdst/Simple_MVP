@@ -3,7 +3,7 @@ package com.pengdst.simplemvplogin.login;
 import android.os.Handler;
 import android.text.TextUtils;
 
-public class LoginPresenter implements LoginInteractor {
+public class LoginPresenter implements OnLoginFinished {
     LoginView loginView;
 
     public LoginPresenter(LoginView loginView) {
