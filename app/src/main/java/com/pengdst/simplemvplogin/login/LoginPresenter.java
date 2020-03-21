@@ -27,6 +27,6 @@ public class LoginPresenter {
                     loginView.hideProgressbar();
                 }
             }
-        }, 3000);
+        }, 2000);
     }
 }
