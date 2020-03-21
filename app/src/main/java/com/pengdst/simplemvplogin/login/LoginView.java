@@ -1,4 +1,4 @@
-package com.pengdst.simplemvplogin;
+package com.pengdst.simplemvplogin.login;
 
 public interface LoginView {
     void setUsernameError();
