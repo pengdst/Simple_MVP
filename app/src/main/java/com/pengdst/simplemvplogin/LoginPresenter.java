@@ -15,7 +15,7 @@ public class LoginPresenter {
             loginView.setUsernameError();
             loginView.setPasswordError();
             loginView.hideProgressbar();
-        }else if(username.equals("admin") && password.equals("admin")){
+        }else if(username.equals("pengkuh") && password.equals("admin")){
             loginView.onLoginSuccess(username);
             loginView.hideProgressbar();
         }else{
