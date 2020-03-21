@@ -2,6 +2,7 @@ package com.pengdst.simplemvplogin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.pengdst.simplemvplogin.databinding.ActivityMainBinding;
@@ -14,5 +15,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Intent data = getIntent();
+
+        String username = data.getStringExtra(ConstantsHelpers.USERNAME_CONS);
+
+        binding.tvHello.setText(username);
     }
 }
